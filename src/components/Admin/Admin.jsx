@@ -154,15 +154,15 @@ const DashBoard = () => {
 
     return (
         <>
-            <div className="max-w-4xl m-auto mt-10 bg-gray-900 py-6 sm:py-12">
+            <div className="max-w-4xl m-auto mt-10 bg-gray-800 py-6 sm:py-12 rounded-3xl items-center">
                 {
                     isloading ? (
                         <Loading />
                     ) : (
                         <>
-                            <div className="flex flex-wrap mb-2">
+                            <div className="flex flex-wrap mb-2 mx-2">
                                 <div className="w-full md:w-1/2 xl:w-1/3 pt-3 px-3 md:pr-2">
-                                    <div className="bg-green-600 border rounded shadow p-2">
+                                    <div className="bg-green-600 border-none rounded-md shadow p-2">
                                         <div className="flex flex-row items-center">
                                             <div className="flex-shrink pl-1 pr-4"><i className="fa fa-wallet fa-2x fa-fw fa-inverse"></i></div>
                                             <div className="flex-1 text-right">
@@ -175,7 +175,7 @@ const DashBoard = () => {
                                     </div>
                                 </div>
                                 <div className="w-full md:w-1/2 xl:w-1/3 pt-3 px-3 md:pl-2">
-                                    <div className="bg-blue-600 border rounded shadow p-2">
+                                    <div className="bg-blue-600 border-none rounded-md shadow p-2">
                                         <div className="flex flex-row items-center">
                                             <div className="flex-shrink pl-1 pr-4"><i className="fas fa-users fa-2x fa-fw fa-inverse"></i></div>
                                             <div className="flex-1 text-right">
@@ -186,7 +186,7 @@ const DashBoard = () => {
                                     </div>
                                 </div>
                                 <div className="w-full md:w-1/2 xl:w-1/3 pt-3 px-3 md:pr-2 xl:pr-3 xl:pl-1">
-                                    <div className="bg-orange-600 border rounded shadow p-2">
+                                    <div className="bg-orange-600 border-none rounded-md shadow p-2">
                                         <div className="flex flex-row items-center">
                                             <div className="flex-shrink pl-1 pr-4"><i className="fas fa-user-plus fa-2x fa-fw fa-inverse"></i></div>
                                             <div className="flex-1 text-right pr-1">
@@ -197,7 +197,7 @@ const DashBoard = () => {
                                     </div>
                                 </div>
                                 <div className="w-full md:w-1/2 xl:w-1/3 pt-3 px-3 md:pl-2 xl:pl-3 xl:pr-2">
-                                    <div className="bg-purple-600 border rounded shadow p-2">
+                                    <div className="bg-purple-600 border-none rounded-md shadow p-2">
                                         <div className="flex flex-row items-center">
                                             <div className="flex-shrink pl-1 pr-4"><i className="fas fa-server fa-2x fa-fw fa-inverse"></i></div>
                                             <div className="flex-1 text-right">
@@ -208,7 +208,7 @@ const DashBoard = () => {
                                     </div>
                                 </div>
                                 <div className="w-full md:w-1/2 xl:w-1/3 pt-3 px-3 md:pr-2 xl:pl-2 xl:pr-3">
-                                    <div className="bg-red-600 border rounded shadow p-2">
+                                    <div className="bg-red-600 border-none rounded-md shadow p-2">
                                         <div className="flex flex-row items-center">
                                             <div className="flex-shrink pl-1 pr-4"><i className="fas fa-tasks fa-2x fa-fw fa-inverse"></i></div>
                                             <div className="flex-1 text-right">
@@ -219,7 +219,7 @@ const DashBoard = () => {
                                     </div>
                                 </div>
                                 <div className="w-full md:w-1/2 xl:w-1/3 pt-3 px-3 md:pl-2 xl:pl-1">
-                                    <div className="bg-pink-600 border rounded shadow p-2">
+                                    <div className="bg-pink-600 border-none rounded-md shadow p-2">
                                         <div className="flex flex-row items-center">
                                             <div className="flex-shrink pl-1 pr-4"><i className="fas fa-inbox fa-2x fa-fw fa-inverse"></i></div>
                                             <div className="flex-1 text-right">
@@ -352,7 +352,7 @@ const ApproveQuestions = () => {
                                 </>
                             ) : (
                                 <>
-                                    <p className='ml-20 font-bold text-red-700 mt-20'>No Questions Need to be Approved</p>
+                                    <p className='ml-20 font-bold text-red-700 mt-20'>No questions eed to be Approved</p>
                                 </>
                             )
                         }
@@ -372,91 +372,120 @@ const Admins = () => {
 
     const fetchalladmins = async () => {
         setisloading(true);
-        const { data } = await axios.get(`${BASE_URL}/request/getadmins`)
+        const { data } = await axios.get(`${BASE_URL}/request/getadmins`);
         if (data.success) {
             setalladmins(data.admins);
         }
         setisloading(false);
-    }
+    };
 
     useEffect(() => {
         fetchalladmins();
-    }, [])
+    }, []);
+
     useEffect(() => {
         fetchalladmins();
-    }, [fun])
+    }, [fun]);
+
     const handlname = (event) => {
-        setadname(event.target.value)
-    }
+        setadname(event.target.value);
+    };
+
     const handlepassword = (event) => {
-        setadpassword(event.target.value)
-    }
+        setadpassword(event.target.value);
+    };
 
     const handlesubmit = async (event) => {
         event.preventDefault();
         setfun(false);
         if (adname === '' || adpassword === '') {
-            toast("All details are mandatory")
+            toast('All details are mandatory');
         } else {
             const { data } = await axios.post(`${BASE_URL}/request/addadmin`, {
                 adname: adname,
                 adpassword: adpassword,
-            })
-            toast(data.message)
+            });
+            toast(data.message);
             setadname('');
             setadpassword('');
         }
         setfun(true);
-    }
+    };
 
     return (
         <>
-
-            <div className="bg-white pt-12 pr-0 pb-12 pl-0 mt-0 mr-auto mb-0 ml-auto sm:py-16 lg:py-20">
-                <div className="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto max-w-4xl sm:px-6 lg:px-8">
-                        <div className="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto sm:flex sm:items-center sm:justify-between">
-                            <div>
-                                <p className="text-xl font-bold text-gray-900">Admins</p>
-                            </div>
-                        </div>
-                        <div className="shadow-xl mt-8 mr-0 mb-0 ml-0 pt-4 pr-10 pb-4 pl-10 flow-root rounded-lg sm:py-2">
-                            <div className="pt--10 pr-0 pb-10 pl-0">
-                                {
-                                    isloading ? (
-                                        <Loading />
-                                    ) : (
-                                        <>
-                                            {
-                                                alladmins.map((item) => (
-                                                    <Usercard key={item._id} person={item} />
-                                                ))
-                                            }
-                                        </>
-                                    )
-                                }
-                            </div>
-                        </div>
+            <div className="bg-gray-100 min-h-[400px] p-8">
+                <div className="max-w-4xl m-auto">
+                    <div className="mb-8">
+                        <h1 className="text-3xl font-bold text-gray-900 mb-2">Admins</h1>
+                        <p className="text-gray-600">Manage the list of admins and add new admins here.</p>
                     </div>
-                </div>
 
-                <div className="max-w-lg mx-auto mt-20">
-                    <form>
-                        <div className="mb-6">
-                            <label htmlFor="email" className="text-sm font-medium text-gray-900 block mb-2">Your Name</label>
-                            <input type="text" onChange={handlname} value={adname} id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name" required="" />
-                        </div>
-                        <div className="mb-6">
-                            <label htmlFor="password" className="text-sm font-medium text-gray-900 block mb-2">Your password</label>
-                            <input type="password" onChange={handlepassword} value={adpassword} id="password" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required="" />
-                        </div>
-                        <button type="submit" onClick={handlesubmit} className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Add Admin</button>
-                    </form>
+                    {/* New Admin Form */}
+                    <div className="bg-white p-6 rounded-lg shadow-lg">
+                        <h2 className="text-xl font-semibold mb-4">Add New Admin</h2>
+                        <form>
+                            <div className="mb-4">
+                                <label htmlFor="name" className="block text-sm font-medium text-gray-900">
+                                    Name
+                                </label>
+                                <input
+                                    type="text"
+                                    onChange={handlname}
+                                    value={adname}
+                                    id="name"
+                                    className="mt-1 block w-full rounded-md shadow-sm focus:outline-none"
+                                    placeholder="Enter name"
+                                    required
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label htmlFor="password" className="block text-sm font-medium text-gray-900">
+                                    Password
+                                </label>
+                                <input
+                                    type="password"
+                                    onChange={handlepassword}
+                                    value={adpassword}
+                                    id="password"
+                                    className="mt-1 block w-full rounded-md focus:outline-none shadow-sm"
+                                    placeholder="Enter password"
+                                    required
+                                />
+                            </div>
+                            <button
+                                type="submit"
+                                onClick={handlesubmit}
+                                className="w-full bg-red-700 hover:bg-red-800 text-white font-medium py-2 rounded-md transition-colors duration-300"
+                            >
+                                Add Admin
+                            </button>
+                        </form>
+                    </div>
+
+                    {/* Existing code for displaying existing admins */}
+                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 mt-4">
+                        {
+                            isloading ? (
+                                <Loading />
+                            ) : (
+                                <>
+                                    {
+                                        alladmins.map((item) => (
+                                            <Usercard key={item._id} person={item} />
+                                        ))
+                                    }
+                                </>
+                            )
+                        }
+                    </div>
                 </div>
             </div>
         </>
     );
 };
+
+
 
 const ReportedQuestions = () => {
     const [reportquestions, setreportquestions] = useState([])
@@ -491,7 +520,7 @@ const ReportedQuestions = () => {
                                 </>
                             ) : (
                                 <>
-                                    <p className='ml-20 font-bold text-red-700 mt-20'>No Questions Need to be Approved</p>
+                                    <p className='ml-20 font-bold text-red-700 mt-20'>No questions have been reported</p>
                                 </>
                             )
                         }
@@ -521,11 +550,11 @@ function Admin() {
     return (
         <>
 
-            <nav className="bg-white border-gray-200 dark:bg-gray-900">
+            <nav className="border-gray-200 bg-gray-900">
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                     <div className="flex items-center cursor-pointer" onClick={() => { window.location.reload() }}>
                         <img src={adminimg} className="h-8 mr-3" alt="Flowbite Logo" />
-                        <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Admin</span>
+                        <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">Admin</span>
                     </div>
                     <button
                         onClick={toggleSidebar}
@@ -549,39 +578,39 @@ function Admin() {
                             <li>
                                 <span
                                     onClick={handlelogout}
-                                    className={` text-white cursor-pointer block py-2 pl-3 pr-4 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-red-600 md:p-0`}
+                                    className={`dark:text-white cursor-pointer block py-2 pl-3 pr-4 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-red-600 md:p-0`}
                                 >
-                                    Admin : Rohith
+                                    Logout
                                 </span>
                             </li>
                             <li>
                                 <span
                                     onClick={() => handleactive('DashBoard')}
-                                    className={` ${activenav === 'DashBoard' ? 'text-red-600' : 'text-white'} cursor-pointer block py-2 pl-3 pr-4 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-red-600 md:p-0`}
+                                    className={` ${activenav === 'DashBoard' ? 'text-red-600' : 'dark:text-white'} cursor-pointer block py-2 pl-3 pr-4 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-red-600 md:p-0`}
                                 >
-                                    DashBoard
+                                    Dashboard
                                 </span>
                             </li>
                             <li>
                                 <span
                                     onClick={() => handleactive('ReportedQuestions')}
-                                    className={` ${activenav === 'ReportedQuestions' ? 'text-red-600' : 'text-white'} cursor-pointer block py-2 pl-3 pr-4 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-red-600 md:p-0`}
+                                    className={` ${activenav === 'ReportedQuestions' ? 'text-red-600' : 'dark:text-white'} cursor-pointer block py-2 pl-3 pr-4 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-red-600 md:p-0`}
                                 >
-                                    reportedQ
+                                    Reported Questions
                                 </span>
                             </li>
                             <li>
                                 <span
                                     onClick={() => handleactive('ApproveQuestions')}
-                                    className={` ${activenav === 'ApproveQuestions' ? 'text-red-600' : 'text-white'} cursor-pointer block py-2 pl-3 pr-4 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-red-600 md:p-0`}
+                                    className={` ${activenav === 'ApproveQuestions' ? 'text-red-600' : 'dark:text-white'} cursor-pointer block py-2 pl-3 pr-4 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-red-600 md:p-0`}
                                 >
-                                    ApproveQ
+                                    Approve Questions
                                 </span>
                             </li>
                             <li>
                                 <span
                                     onClick={() => handleactive('Users')}
-                                    className={` ${activenav === 'Users' ? 'text-red-600' : 'text-white'} cursor-pointer block py-2 pl-3 pr-4 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-red-600 md:p-0`}
+                                    className={` ${activenav === 'Users' ? 'text-red-600' : 'dark:text-white'} cursor-pointer block py-2 pl-3 pr-4 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-red-600 md:p-0`}
                                 >
                                     Users
                                 </span>
@@ -589,7 +618,7 @@ function Admin() {
                             <li>
                                 <span
                                     onClick={() => handleactive('Admins')}
-                                    className={` ${activenav === 'Admins' ? 'text-red-600' : 'text-white'} cursor-pointer block py-2 pl-3 pr-4 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-red-600 md:p-0`}
+                                    className={` ${activenav === 'Admins' ? 'text-red-600' : 'dark:text-white'} cursor-pointer block py-2 pl-3 pr-4 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-red-600 md:p-0`}
                                 >
                                     Admins
                                 </span>

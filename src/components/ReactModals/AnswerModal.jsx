@@ -59,7 +59,7 @@ function AnswerModal({ isOpen, closeModal, question }) {
         >
             {
                 posted ? (
-                    <TQModal closeModal={closeModal} message={"Thanks for the Answer, Hope it wil helps your Friends"} />
+                    <TQModal closeModal={closeModal} message={"Thanks for the Answer, Hope it will helps your Friends"} />
                 ) : (
                     <div>
                         <GrClose onClick={closeModal} className=' cursor-pointer mt-4 ml-4' />

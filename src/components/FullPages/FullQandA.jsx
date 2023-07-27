@@ -16,6 +16,7 @@ import Time from '../buttons/Time'
 import { UpdateAnswerQstate } from '../../redux/Slices/AnswerSlice'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import Rolebadge from '../buttons/Rolebadge';
 import { toast, ToastContainer } from 'react-toastify'
 import { BASE_URL } from '../../helper'
 
@@ -114,18 +115,31 @@ function FullQandA() {
                                                 <div className="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
                                                     <div className="mb-4 lg:mb-6 not-format">
                                                         <div className="flex items-center mb-6 not-italic">
-                                                            <div className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
+                                                            <div className="inline-flex items-center mr-3 text-sm text-gray-900 text-white">
                                                                 <img className="mr-4 w-12 h-12 rounded-full" src={`${BASE_URL}/${question.userId.Profilepic}`} alt="Jese Leos" />
-                                                                <div>
-                                                                    <p onClick={() => navigate(`/user/${question.userId._id}`)} className="text-lg cursor-pointer font-bold text-gray-900 dark:text-white">{question.userId.name}</p>
-                                                                    <p className="text-sm font-light text-gray-500 dark:text-gray-400">{question.userId.email}</p>
-                                                                    <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                                                                        <Time time={question.createdAt} />
-                                                                    </p>
-                                                                </div>
+
+                                                                {
+                                                                    question.isAnonymous ? (
+                                                                        <div>
+                                                                            <p className="text-lg cursor-pointer font-bold text-gray-900 text-white">Incognito</p>
+                                                                            <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                                                                                <Time time={question.createdAt} />
+                                                                            </p>
+                                                                        </div>
+                                                                    ) : (
+                                                                        <div>
+                                                                            <p onClick={() => navigate(`/user/${question.userId._id}`)} className="text-lg cursor-pointer font-bold text-gray-900 text-white">{question.userId.name}</p>
+                                                                            <p className="text-sm font-light text-gray-500 dark:text-gray-400">{question.userId.email}</p>
+                                                                            <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                                                                                <Time time={question.createdAt} />
+                                                                            </p>
+                                                                        </div>
+                                                                    )
+                                                                }
+
                                                             </div>
                                                         </div>
-                                                        <h3 className="mb-4 break-words font-extrabold leading-tight text-gray-900 lg:mb-6 dark:text-white">{question.content}</h3>
+                                                        <h3 className="mb-4 break-words font-extrabold leading-tight text-gray-900 lg:mb-6 text-white">{question.content}</h3>
                                                         <div className='flex flex-wrap justify-between gap-5'>
                                                             <div className='flex gap-10'>
                                                                 <Likebtn handleupvote={handleupvote} isUpvoted={isUpvoted} score={Upscore} />
@@ -144,7 +158,7 @@ function FullQandA() {
                                                     <div className="not-format">
                                                         <Sortbtn />
                                                         <div className="mb-6">
-                                                            <h2 className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Answers ({answers.length})</h2>
+                                                            <h2 className="text-lg lg:text-2xl font-bold text-gray-900 text-white">Answers ({answers.length})</h2>
                                                         </div>
                                                         {
                                                             isAloading ? (
