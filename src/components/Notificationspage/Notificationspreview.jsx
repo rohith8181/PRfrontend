@@ -42,8 +42,7 @@ function Notificationspreview() {
 
 
     return (
-        <>
-            {/* <Navbar /> */}
+        <div className='mx-5'>
             <div className=" bg-gray-800 mt-20 mb-52 max-w-2xl m-auto p-8 rounded-xl">
                 <div className='text-center'>
                     <span className='text-white text-2xl'>Notifications</span>
@@ -79,7 +78,7 @@ function Notificationspreview() {
                     }
                 </ul>
             </div>
-        </>
+        </div>
 
     )
 }

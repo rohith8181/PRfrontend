@@ -26,19 +26,21 @@ const Usercard = ({ person }) => {
                     name: person.name
                 }
             })
+            toast(data.message);
+            if (data.success) {
+                setdeleted(true);
+            }
         }
         else {
-            console.log(person.userId);
             const { data } = await axios.delete(`${BASE_URL}/request/userdelete`, {
                 params: {
                     userid: person._id
                 }
             })
-        }
-
-        toast(data.message);
-        if (data.success) {
-            setdeleted(true);
+            toast(data.message);
+            if (data.success) {
+                setdeleted(true);
+            }
         }
     }
     return (
@@ -153,7 +155,7 @@ const DashBoard = () => {
     }, [])
 
     return (
-        <>
+        <div className='mx-5'>
             <div className="max-w-4xl m-auto mt-10 bg-gray-800 py-6 sm:py-12 rounded-3xl items-center">
                 {
                     isloading ? (
@@ -235,7 +237,7 @@ const DashBoard = () => {
                 }
             </div>
 
-        </>
+        </div>
     )
 };
 

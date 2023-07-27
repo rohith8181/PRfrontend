@@ -58,7 +58,7 @@ function FullQandA() {
     }, [idexists, Sort])
 
     useEffect(() => {
-        if (question.length != 0) {
+        if (question.length !== 0) {
             setIsupvoted(question.upvotes.includes(userid));
             setIsdownvoted(question.downvotes.includes(userid));
             setUpscore(question.upvotes.length);
@@ -108,7 +108,6 @@ function FullQandA() {
                         {
                             idexists ? (
                                 <>
-                                    {/* <Navbar /> */}
                                     <div className='flex justify-center mt-20'>
                                         <div className="pt-8 pb-16 lg:pt-16 lg:pb-24 w-full sm:w-[75%]  lg:w-[65%] text-white bg-gray-900">
                                             <div className="flex justify-between px-4 mx-auto max-w-screen-xl ">

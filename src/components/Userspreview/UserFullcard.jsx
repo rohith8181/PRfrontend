@@ -82,7 +82,7 @@ function UserFullcard() {
                             ) : (
                                 UserRecords.Questionsasked.map((question) => {
                                     if (!question.isAnonymous) {
-                                        <Usercardcontent key={question._id} content={question} type="question" />
+                                       return <Usercardcontent key={question._id} content={question} type="question" />
                                     }
                                 })
                             )}
