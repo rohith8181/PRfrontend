@@ -1,0 +1,47 @@
+
+  
+  .sbtn {
+    position: relative;
+  }
+  
+  .btn-label {
+    font-weight: bold;
+    margin-right: 8px;
+  }
+  
+  .dropdown-toggle {
+    background-color: #000000; /* Example background color */
+    border: none;
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white  ;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 50%;
+    background-color: #900a0a; /* Example background color */
+    list-style-type: none;
+    padding: 8px;
+    margin: 0;
+    color: white;
+    border-radius: 4px;
+  }
+  
+  .dropdown-menu li {
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dropdown-menu li:hover {
+    background-color: #000000; /* Example hover background color */
+  }
+  
+  .dropdown-menu li.activesort {
+    background-color: #000000; /* Example active background color */
+  }
+  

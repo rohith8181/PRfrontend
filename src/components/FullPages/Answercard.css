@@ -1,0 +1,10 @@
+.content {
+    display: inline-block;
+    height: 40px;
+    overflow: hidden;
+    transition: height 0.3s ease;
+}
+
+.expanded {
+    height: auto;
+}

@@ -1,0 +1,111 @@
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateY(-50px);
+    }
+
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideOut {
+    from {
+      transform: translateY(0);
+    }
+
+    to {
+      transform: translateY(-50px);
+    }
+  }
+
+  .public {
+    border: 1px solid rgb(116, 116, 116);
+    border-radius: 10px;
+    padding: 0px 5px;
+  }
+
+  .public:hover {
+    background-color: rgb(234, 234, 234);
+  }
+
+  .custom-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    animation: fadeIn 0.3s ease-in forwards;
+  }
+
+  .custommodal {
+    border-radius: 10px;
+    width: 60%;
+    max-height: 600px;
+    background-color: white;
+    transform: translate(-50%, -50%);
+    animation: slideIn 0.3s ease-in forwards;
+    overflow-y: scroll;
+  }
+
+  .custommodal_acad {
+    border-radius: 10px;
+    width: 90%;
+    height: 80%;
+    max-height: 700px;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px 20px;
+    outline: none;
+    animation: slideIn 0.3s ease-in forwards;
+    overflow-y: scroll;
+  }
+
+  .custommodal:focus-visible {
+    display: none;
+  }
+
+  .custommodal_acad:focus-visible {
+    display: none;
+  }
+
+  .quesin,
+  .Hashin {
+    border-bottom: 1px solid black;
+  }
+
+  @media screen and (max-width:820px) {
+    .custommodal {
+      width: 70%;
+    }
+  }
+
+  @media screen and (max-width:630px) {
+    .custommodal {
+      width: 95%;
+    }
+  }

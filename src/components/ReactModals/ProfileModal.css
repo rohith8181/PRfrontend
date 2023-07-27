@@ -1,0 +1,50 @@
+
+
+.custommodalprofile {
+    width: 220px;
+    height: 100px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    top: 10%;
+    left: 70%;
+    animation: slideIn 0.2s ease-in forwards;
+}
+.custommodalprofile:focus-visible{
+    display: none;
+}
+
+@media (width <= 1280px) {
+    .custommodalprofile {
+        top: 10%;
+        left: 70%;
+    }
+}
+
+@media (width <= 1150px) {
+    .custommodalprofile {
+        top: 10%;
+        left: 65%;
+    }
+}
+@media (width <= 900px) {
+    .custommodalprofile {
+        top: 10%;
+        left: 60%;
+    }
+}
+@media (0px <= width < 768px) {
+    .custommodalprofile {
+        top: 10%;
+        left: 15%;
+    }
+}
+.custom-overlay-profile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  z-index: 50;
+  animation: fadeIn 0.3s ease-in forwards;
+}

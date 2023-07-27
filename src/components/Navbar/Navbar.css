@@ -1,0 +1,66 @@
+.active {
+  color: rgb(154, 42, 42);
+  border-bottom-width: 3px;
+  border-color: rgb(181, 35, 35);
+}
+.active > .svgIcon > .notispecial {
+  color: rgb(181, 35, 35);
+}
+.qNav_icons > .active > .svgIcon {
+  fill: #8f1f1b;
+}
+.menuactive {
+  top: 110%;
+}
+.navbar {
+    font-family: 'Poppins', sans-serif;
+}
+.Nav {
+    padding: 1px;
+    box-shadow: 0px 5px 8px -8px rgba(0, 0, 0, 0.5);
+  }
+  
+  .qNav_icon > .svgIcon {
+    font-size: xx-large;
+    padding: 5px 20px;
+    color: #666;
+  }
+  .qNav_avatar {
+    cursor: pointer;
+  }
+  .qNav_Rem {
+    display: flex;
+    align-items: center;
+    margin-left: 25px;
+  }
+  
+  .qNav_Rem > .svgIcon {
+    font-size: xx-large;
+    color: gray;
+    margin-left: 25px;
+    cursor: pointer;
+  }
+  .qNav_Rem > .svgIcon:hover {
+    color: #b92b27;
+  }
+  
+  .qNav_Rem > .MuiButton-root {
+    color: white;
+    background: #b92b27;
+    text-transform: inherit;
+    border-radius: 20px;
+    margin-left: 25px;
+  }
+  
+  .qNav_Rem > .MuiButton-root:hover {
+    color: #ffffff;
+    background: #8f1f1b;
+  }
+  .active .svgIcon {
+    color: #b92b27;
+    fill: #b92b27;
+  }
+  .active {
+    border-bottom: 3px solid #b92b27;
+    border-radius: 3px;
+  } 
