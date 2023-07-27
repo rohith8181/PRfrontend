@@ -21,7 +21,7 @@ import Footer from './components/Footer/Footer';
 import Admin from './components/Admin/Admin';
 import Team from './components/Team/Team';
 import AdminLogin from './components/Admin/AdminLogin';
-import { BASE_URL } from '../../helper'
+import { BASE_URL } from './helper'
 
 
 export const AdminProtectedRoute = (props) => {
