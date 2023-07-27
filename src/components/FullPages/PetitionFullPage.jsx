@@ -84,10 +84,10 @@ function PetitionFullPage() {
                                                 <div className="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
                                                     <div className="mb-4 lg:mb-6 not-format">
                                                         <div className="flex items-center mb-6 not-italic">
-                                                            <div className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
+                                                            <div className="inline-flex items-center mr-3 text-sm text-gray-900 text-white">
                                                                 <img className="mr-4 w-12 h-12 rounded-full" src={`${BASE_URL}/${Petition.userId.Profilepic}`} alt="Jese Leos" />
                                                                 <div>
-                                                                    <p onClick={() => navigate(`/user/${Petition.userId._id}`)} className="text-lg font-bold cursor-pointer text-gray-900 dark:text-white">{Petition.userId.name}</p>
+                                                                    <p onClick={() => navigate(`/user/${Petition.userId._id}`)} className="text-lg font-bold cursor-pointer text-gray-900 text-white">{Petition.userId.name}</p>
                                                                     <p className="text-sm font-light text-gray-500 dark:text-gray-400">{Petition.userId.email}</p>
                                                                     <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                                                                         <Time time={Petition.createdAt} />
@@ -96,7 +96,7 @@ function PetitionFullPage() {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <h3 className="mb-4 break-words font-extrabold leading-tight text-gray-900 lg:mb-6 dark:text-white">
+                                                        <h3 className="mb-4 break-words font-extrabold leading-tight text-gray-900 lg:mb-6 text-white">
                                                             {Petition.title}
                                                         </h3>
                                                         <p className="text-base border-t border-b py-5 border-gray-700"

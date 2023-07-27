@@ -44,17 +44,32 @@ function QandAcard({ item }) {
       <div className="flex flex-wrap justify-between items-center border-b border-b-gray-200">
         <div className='flex flex-wrap gap-2 p-4'>
           <img className="h-full object-cover rounded-full w-14" loading='lazy' src={`${BASE_URL}/${item.userId.Profilepic}`} alt="UserPropilepic" />
-          <span className="flex grow-1 flex-col">
-            <div onClick={() => navigate(`/user/${item.userId._id}`)} className=" cursor-pointer flex items-center flex-wrap gap-1 font-bold ">
-              <span className="text-sm font-semibold">
-                {item.userId.name}
+          {
+            item.isAnonymous ? (
+              <div>
+                <span className="flex grow-1 flex-col">
+                  <span className="text-sm font-semibold">
+                    Incognito
+                  </span>
+                  <div className="font-thin color-gray-400">
+                    <Time time={item.createdAt} />
+                  </div>
+                </span>
+              </div>
+            ) : (
+              <span className="flex grow-1 flex-col">
+                <div onClick={() => navigate(`/user/${item.userId._id}`)} className=" cursor-pointer flex items-center flex-wrap gap-1 font-bold ">
+                  <span className="text-sm font-semibold">
+                    {item.userId.name}
+                  </span>
+                  <Rolebadge role={item.userId.role} />
+                </div>
+                <div className="font-thin color-gray-400">
+                  <Time time={item.createdAt} />
+                </div>
               </span>
-              <Rolebadge role={item.userId.role} />
-            </div>
-            <div className="font-thin color-gray-400">
-              <Time time={item.createdAt} />
-            </div>
-          </span>
+            )
+          }
         </div>
         <div className='flex flex-wrap justify-center gap-10 pr-10 pl-4'>
           <Likebtn handleupvote={handleupvote} isUpvoted={isUpvoted} score={Upscore} />

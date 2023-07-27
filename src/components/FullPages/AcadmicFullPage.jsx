@@ -89,10 +89,10 @@ function AcadmicFullPage() {
                                                 <div className="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
                                                     <div className="mb-4 lg:mb-6 not-format">
                                                         <div className="flex items-center mb-6 not-italic">
-                                                            <div className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
+                                                            <div className="inline-flex items-center mr-3 text-sm text-gray-900 text-white">
                                                                 <img className="mr-4 w-16 h-16 rounded-full" src={`${BASE_URL}/${post[0].userId.Profilepic}`} alt="Jese Leos" />
                                                                 <div>
-                                                                    <a href="#" rel="author" className="text-xl font-bold text-gray-900 dark:text-white">{post[0].userId.name}</a>
+                                                                    <a href="#" rel="author" className="text-xl font-bold text-gray-900 text-white">{post[0].userId.name}</a>
                                                                     <p className="text-base font-light text-gray-500 dark:text-gray-400">{post[0].userId.email}</p>
                                                                     <p className="text-base font-light text-gray-500 dark:text-gray-400"><Time time={post[0].createdAt} /></p>
                                                                 </div>
@@ -106,7 +106,7 @@ function AcadmicFullPage() {
                                                     />
                                                     <div className="not-format mt-10">
                                                         <div className="flex justify-between items-center mb-6">
-                                                            <h2 className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Discussion ({postcomments.length})</h2>
+                                                            <h2 className="text-lg lg:text-2xl font-bold text-gray-900 text-white">Discussion ({postcomments.length})</h2>
                                                         </div>
                                                         <div className="mb-6">
                                                             <div className="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">

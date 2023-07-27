@@ -59,13 +59,13 @@ function Answercard({ item }) {
         <div className="p-6 mb-6 border-t border-b border-gray-700  text-base bg-white rounded-lg dark:bg-gray-900">
             <div className="flex justify-between items-center mb-2">
                 <div className="flex items-center">
-                    <p className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
+                    <p className="inline-flex items-center mr-3 text-sm text-gray-900 text-white">
                         <img
                             className="mr-2 w-6 h-6 rounded-full"
                             src={`${BASE_URL}/${item.userId.Profilepic}`}
                             alt="Michael Gough" />{item.userId.name}</p>
                     <p className="text-sm text-gray-600 dark:text-gray-400">
-                        <Time time={item.createdAt} />
+                        {/* <Time time={item.createdAt} /> */}
                     </p>
                 </div>
             </div>

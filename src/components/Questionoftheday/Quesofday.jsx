@@ -17,8 +17,8 @@ function Quesofday() {
     return (
         <div className="qofthday pt-5 pb-5">
             <div className="qandacard sm:max-w-xl w-[100%] shadow-lg rounded text-center text-white  p-4 bg-gradient-to-r from-[#363636] to-[#a00f0f] m-auto">
-                <span className='font-bold text-xl font-mono'>Quote of the Day</span>
-                <div className="question text-left pb-2">
+                <span className='font-bold text-2xl font-mono'>Quote of the Day</span>
+                <div className="question text-center pb-2">
                     <span className='text-[16px] font-semibold hover:border-b border-white cursor-pointer'>
                         {question}
                     </span>
