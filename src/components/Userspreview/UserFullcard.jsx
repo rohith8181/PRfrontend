@@ -43,7 +43,7 @@ function UserFullcard() {
                 setsubed(false);
             }
         }
-    }, [USER, userid ,params])
+    }, [USER, userid, params])
 
     const handleTabClick = (tab) => {
         setActiveTab(tab);
@@ -80,9 +80,11 @@ function UserFullcard() {
                             {isRloading ? (
                                 <Loading />
                             ) : (
-                                UserRecords.Questionsasked.map((question) => (
-                                    <Usercardcontent key={question._id} content={question} type="question" />
-                                ))
+                                UserRecords.Questionsasked.map((question) => {
+                                    if (!question.isAnonymous) {
+                                        <Usercardcontent key={question._id} content={question} type="question" />
+                                    }
+                                })
                             )}
                         </div>
                     );
@@ -237,7 +239,7 @@ function UserFullcard() {
                                             </>
                                         )
                                     }
-                                    </>
+                                </>
                             ) : (
                                 <Page404 />
                             )
