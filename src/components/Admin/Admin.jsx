@@ -19,12 +19,23 @@ const Usercard = ({ person }) => {
 
     const [deleted, setdeleted] = useState(false);
     const handleaddelete = async () => {
-        const { data } = await axios.delete(`${BASE_URL}/request/addelete`, {
-            params: {
-                role: person.role,
-                name: person.name
-            }
-        })
+
+        if (person.role === "Admin") {
+            const { data } = await axios.delete(`${BASE_URL}/request/admindelete`, {
+                params: {
+                    name: person.name
+                }
+            })
+        }
+        else {
+            console.log(person.userId);
+            const { data } = await axios.delete(`${BASE_URL}/request/userdelete`, {
+                params: {
+                    userid: person._id
+                }
+            })
+        }
+
         toast(data.message);
         if (data.success) {
             setdeleted(true);
@@ -281,7 +292,6 @@ const Users = () => {
                                                     userresults.length === 0 ? (
                                                         <h1 className='text-center text-xl text-red-800'>No results</h1>
                                                     ) : (
-                                                        // <ul role="list" className="divide-y divide-gray-100 max-w-2xl m-auto bg-black">
                                                         <div className="shadow-xl max-w-xl m-auto pt-4 pr-10 pb-4 pl-10 flow-root rounded-lg sm:py-2">
                                                             <div className="pt--10 pr-0 pb-10 pl-0">
                                                                 {userresults.map((person) => (
@@ -289,7 +299,6 @@ const Users = () => {
                                                                 ))}
                                                             </div>
                                                         </div>
-                                                        // </ul>
                                                     )
                                                 }
                                             </>
