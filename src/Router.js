@@ -21,13 +21,15 @@ import Footer from './components/Footer/Footer';
 import Admin from './components/Admin/Admin';
 import Team from './components/Team/Team';
 import AdminLogin from './components/Admin/AdminLogin';
+import { BASE_URL } from '../../helper'
+
 
 export const AdminProtectedRoute = (props) => {
     const navigate = useNavigate();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const Adminexists = async () => {
         try {
-            const { data } = await axios.get("http://localhost:5000/request/verifyauth", {
+            const { data } = await axios.get(`${BASE_URL}/request/verifyauth`, {
                 headers: {
                     "x-access-token": Cookies.get("Admintoken"),
                 }
