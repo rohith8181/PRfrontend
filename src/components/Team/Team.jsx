@@ -3,7 +3,7 @@ const Rohith = require("../../assests/Rohith.JPG")
 const Gowtham = require("../../assests/Gowtham.jpg")
 const Balaji = require("../../assests/Balaji.jpg")
 const Jashwanthjee = require("../../assests/Jashwanthjee.jpg")
-const Dilipkumar = require("../../assests/Dilipkumar.jpeg")
+const Dilipkumar = require("../../assests/Dilipkumar.JPG")
 
 function Team() {
     return (
