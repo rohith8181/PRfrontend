@@ -69,15 +69,11 @@ function FullQandA() {
 
 
     const handleupvote = () => {
-        if (!isUpvoted) {
-            dispatch(UpdateAnswerQstate({ type: "QuesUp", QuesID: QuesId, userId: userid }));
-        }
+        dispatch(UpdateAnswerQstate({ type: "QuesUp", QuesID: QuesId, userId: userid }));
     }
 
     const handledownvote = () => {
-        if (!isDownvoted) {
-            dispatch(UpdateAnswerQstate({ type: "QuesDown", QuesID: QuesId, userId: userid }));
-        }
+        dispatch(UpdateAnswerQstate({ type: "QuesDown", QuesID: QuesId, userId: userid }));
     }
 
     const handlereport = async () => {
@@ -127,7 +123,10 @@ function FullQandA() {
                                                                         </div>
                                                                     ) : (
                                                                         <div>
-                                                                            <p onClick={() => navigate(`/user/${question.userId._id}`)} className="text-lg cursor-pointer font-bold text-gray-900 text-white">{question.userId.name}</p>
+                                                                            <div className='flex items-center gap-1'>
+                                                                                <p onClick={() => navigate(`/user/${question.userId._id}`)} className="text-lg cursor-pointer font-bold text-gray-900 text-white">{question.userId.name}</p>
+                                                                                <Rolebadge role={question.userId.role} />
+                                                                            </div>
                                                                             <p className="text-sm font-light text-gray-500 dark:text-gray-400">{question.userId.email}</p>
                                                                             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                                                                                 <Time time={question.createdAt} />
@@ -144,7 +143,13 @@ function FullQandA() {
                                                                 <Likebtn handleupvote={handleupvote} isUpvoted={isUpvoted} score={Upscore} />
                                                                 <Dislikebtn handledownvote={handledownvote} isdownvoted={isDownvoted} score={Downscore} />
                                                             </div>
-                                                            <span onClick={handlereport} className={`text-sm px-5 hover:font-bold hover:text-red-600 cursor-pointer`}>{reported ? "reported" : "report"}</span>
+                                                            {
+                                                                userid !== question.userId._id ? (
+                                                                    <span onClick={handlereport} className={`text-sm px-5 hover:font-bold hover:text-red-600 cursor-pointer`}>{reported ? "reported" : "report"}</span>
+                                                                ) : (
+                                                                    <></>
+                                                                )
+                                                            }
 
                                                             <button onClick={openModal}
                                                                 className="inline-flex items-center py-2.5 px-4 gap-2 text-xs font-medium text-center text-white bg-red-700 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-primary-800">

@@ -17,7 +17,7 @@ function Academichelppreview() {
 
   const Sort = useSelector((state) => state.Sort.sorttype);
   const [Posts, setPosts] = useState([]);
-  const [postLimit, setPostLimit] = useState(2);
+  const [postLimit, setPostLimit] = useState(5);
   const [loadedPosts, setLoadedPosts] = useState(0);
 
 

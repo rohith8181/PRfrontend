@@ -43,8 +43,10 @@ function Signupform() {
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
+  const [isloading, setisloading] = useState(false);
 
   const signuprequest = async (event) => {
+    setisloading(true);
     event.preventDefault();
     if (!name) {
       namespanref.current.innerText = "this feild is required";
@@ -103,6 +105,7 @@ function Signupform() {
         toast('User Already Exists')
       }
     }
+    setisloading(false);
   };
 
   const invalidemailformat = () => {
@@ -158,7 +161,15 @@ function Signupform() {
           }}
         />
         <span ref={passwordspanref}></span>
-        <button className="authbtn mt-5" onClick={signuprequest}>Sign Up</button>
+        {
+          isloading ? (
+            <div className="flex justify-center px-8 py-1">
+              <div className="border-t-transparent border-solid animate-spin rounded-full border-blue-400 border-2 h-4 w-4"></div>
+            </div>
+          ) : (
+            <button className="authbtn mt-5" onClick={signuprequest}>Sign Up</button>
+          )
+        }
         <br />
         <Link to={"/"} className="hover:font-bold SIGNIN">
           Sign In

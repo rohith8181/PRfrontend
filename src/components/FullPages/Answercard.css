@@ -4,7 +4,10 @@
     overflow: hidden;
     transition: height 0.3s ease;
 }
-
+.rawHtml a{
+    color: rgb(87, 87, 249);
+    border-bottom: 0.5px rgb(73, 73, 255) solid;
+}
 .expanded {
     height: auto;
 }

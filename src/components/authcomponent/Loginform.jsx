@@ -32,6 +32,7 @@ function Loginform() {
   }, []);
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
+  const [isloading, setisloading] = useState(false);
   const emailref = useRef();
   const passwordref = useRef();
 
@@ -39,6 +40,7 @@ function Loginform() {
 
   const loginrequest = async (event) => {
     event.preventDefault();
+    setisloading(true);
     const response = await fetch(`${BASE_URL}/request/login`, {
       method: "POST",
       headers: {
@@ -66,6 +68,7 @@ function Loginform() {
     else if (data.status === 204) {
       toast("Email doesn't exists");
     }
+    setisloading(false);
   };
 
 
@@ -96,8 +99,15 @@ function Loginform() {
           }
         />
         <span ref={passwordref}></span>
-
-        <button className="authbtn" onClick={loginrequest}>Sign In</button>
+        {
+          isloading ? (
+            <div className="flex justify-center px-8 py-1">
+              <div className="border-t-transparent border-solid animate-spin rounded-full border-blue-400 border-2 h-4 w-4"></div>
+            </div>
+          ) : (
+            <button className="authbtn" onClick={loginrequest}>Sign In</button>
+          )
+        }
         <br />
         <Link to={"/signup"} className="hover:font-bold SIGNUP">
           Sign up

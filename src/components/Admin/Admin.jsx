@@ -97,7 +97,7 @@ const QuestionCard = ({ item }) => {
             <div className="bg-white rounded-lg border shadow-sm max-w-3xl mt-5 m-auto">
                 <div className="flex flex-wrap justify-between items-center border-b border-b-gray-200">
                     <div className='flex flex-wrap gap-2 p-4'>
-                        <img className="h-full object-cover rounded-full w-14" loading='lazy' src={`${BASE_URL}/${item.userId.Profilepic}`} alt="UserPropilepic" />
+                        <img className="h-full object-cover rounded-full w-12" loading='lazy' src={`${BASE_URL}/${item.userId.Profilepic}`} alt="UserPropilepic" />
                         <span className="flex grow-1 flex-col">
                             <div className=" cursor-pointer flex items-center flex-wrap gap-1 font-bold ">
                                 <span className="text-sm font-semibold">
@@ -111,7 +111,7 @@ const QuestionCard = ({ item }) => {
                         </span>
                     </div>
                     <div>
-                        <p className='px-5'>{item.content}</p>
+                        <p className='px-3'>{item.content}</p>
                     </div>
                     <div className="p-3 flex">
                         <button onClick={handleapprove} className={`text-slate-800 ${isApproved || isdeleted ? "pointer-events-none" : ""} hover:text-blue-600 text-sm bg-white hover:bg-slate-100 border border-slate-200 rounded-l-lg font-medium px-4 py-2 inline-flex space-x-1 items-center`}>

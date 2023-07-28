@@ -81,8 +81,8 @@ function UserFullcard() {
                                 <Loading />
                             ) : (
                                 UserRecords.Questionsasked.map((question) => {
-                                    if (!question.isAnonymous) {
-                                       return <Usercardcontent key={question._id} content={question} type="question" />
+                                    if (!question.isAnonymous && question.isVerified) {
+                                        return <Usercardcontent key={question._id} content={question} type="question" />
                                     }
                                 })
                             )}
