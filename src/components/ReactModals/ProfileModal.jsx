@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Modal from 'react-modal'
 import { CiLogout } from "react-icons/ci"
 import "./ProfileModal.css"
 import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from "react-redux"
+import ForgotModal from './ForgotModal'
+
 
 function ProfileModal({ isOpen, closeModal }) {
 
@@ -14,7 +16,14 @@ function ProfileModal({ isOpen, closeModal }) {
         Cookies.remove('token');
         navigate('/', { replace: true });
     }
+    const [modalOpen, setModalOpen] = useState(false);
 
+    const openmodal = () => {
+        setModalOpen(true);
+    }
+    const closemodal = () => {
+        setModalOpen(false);
+    }
     return (
 
         <Modal
@@ -28,9 +37,12 @@ function ProfileModal({ isOpen, closeModal }) {
 
             <div className='w-[100%] shadow-2xl h-[100%] text-black flex flex-col items-center'>
                 <span className='bg-white w-6 h-6 rotate-45 relative bottom-3'></span>
-                <ul className='items-center flex flex-col gap-3'>
+                <ul className='items-center flex flex-col gap-2'>
                     <li>
-                        <span onClick={() => navigate(`/user/${userid._id}`)} className='border-b-2 pb-2 cursor-pointer font-bold hover:text-red-700'>
+                        <span onClick={openmodal} className='text-sm  text-red-600 hover:text-red-800 font-semibold cursor-pointer'>Change Password</span>
+                    </li>
+                    <li>
+                        <span onClick={() => navigate(`/user/${userid._id}`)} className='cursor-pointer font-bold hover:text-red-700'>
                             {userid.email}
                         </span>
                     </li>
@@ -42,6 +54,7 @@ function ProfileModal({ isOpen, closeModal }) {
                     </li>
                 </ul>
             </div>
+            <ForgotModal isopen={modalOpen} closemodal={closemodal} />
 
         </Modal>
 

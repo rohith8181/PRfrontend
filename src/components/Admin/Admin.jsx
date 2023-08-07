@@ -354,7 +354,7 @@ const ApproveQuestions = () => {
                                 </>
                             ) : (
                                 <>
-                                    <p className='ml-20 font-bold text-red-700 mt-20'>No questions eed to be Approved</p>
+                                    <p className='ml-20 font-bold text-red-700 mt-20'>No questions need to be Approved</p>
                                 </>
                             )
                         }

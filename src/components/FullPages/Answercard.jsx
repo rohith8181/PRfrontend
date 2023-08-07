@@ -53,7 +53,7 @@ function Answercard({ item }) {
         dispatch(UpdateAnswerAstate({ type: "AnsDown", AnsID: item._id, userId: userid }));
     }
     return (
-        <div className="p-6 mb-6 border-t border-b border-gray-700  text-base bg-white rounded-lg dark:bg-gray-900">
+        <div className="p-6 mb-6 border-t border-b border-gray-700  text-base rounded-lg dark:bg-gray-900">
             <div className="flex justify-between items-center mb-2">
                 <div className="flex items-center">
                     <p onClick={() => { navigate(`/user/${item.userId._id}`) }} className="cursor-pointer inline-flex items-center mr-3 text-sm text-white">

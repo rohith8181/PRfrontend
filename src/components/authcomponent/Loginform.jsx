@@ -37,6 +37,16 @@ function Loginform() {
   const passwordref = useRef();
 
 
+  const handleforgot = async () => {
+    if (!email) {
+      return toast("Please Enter email")
+    }
+    const { data } = await axios.post(`${BASE_URL}/request/forgotpassword`, {
+      email: email,
+    });
+
+    toast(data.message);
+  }
 
   const loginrequest = async (event) => {
     event.preventDefault();
@@ -100,6 +110,7 @@ function Loginform() {
           }
         />
         <span ref={passwordref}></span>
+        <span onClick={handleforgot} className="text-base cursor-pointer hover:text-gray-600">forgot password ?</span>
         {
           isloading ? (
             <div className="flex justify-center px-8 py-1">

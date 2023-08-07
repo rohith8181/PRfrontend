@@ -32,7 +32,7 @@ function PetitionFullPage() {
     }, [PETID])
 
     useEffect(() => {
-        if (Petition.length != 0) {
+        if (Petition.length !== 0) {
             setscore(Petition.SignedBy.length);
             setIssigned(Petition.SignedBy.includes(userid));
         }
